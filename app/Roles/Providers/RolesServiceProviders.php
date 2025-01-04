@@ -2,7 +2,14 @@
 
 namespace App\Roles\Providers;
 
-class RolesServiceProviders
-{
+use App\Roles\Interface\RolesRepositoryInterface;
+use App\Roles\Repositories\RolesRepository;
+use Illuminate\Support\ServiceProvider;
 
+class RolesServiceProviders extends ServiceProvider
+{
+    public function register(): void
+    {
+        $this->app->bind(RolesRepositoryInterface::class, RolesRepository::class);
+    }
 }

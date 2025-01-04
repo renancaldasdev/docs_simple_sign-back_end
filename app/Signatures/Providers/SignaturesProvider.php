@@ -4,7 +4,7 @@ namespace App\Signatures\Providers;
 
 use App\Documents\Interface\DocumentsRepositoryInterface;
 use App\Documents\Repositories\DocumentsRepository;
-use Carbon\Laravel\ServiceProvider;
+use Illuminate\Support\ServiceProvider;
 
 class SignaturesProvider extends ServiceProvider
 {

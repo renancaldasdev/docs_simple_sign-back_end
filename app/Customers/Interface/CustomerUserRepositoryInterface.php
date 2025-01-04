@@ -4,7 +4,7 @@ namespace App\Customers\Interface;
 
 use App\Base\Interface\BaseRepositoryInterface;
 
-interface CustomerRepositoryInterface extends BaseRepositoryInterface
+interface CustomerUserRepositoryInterface extends BaseRepositoryInterface
 {
 
 }
