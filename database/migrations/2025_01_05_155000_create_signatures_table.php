@@ -11,15 +11,14 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('signatures', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->uuid('document_id');
-            $table->uuid('user_id');
+            $table->id();
+            $table->foreignId('document_id')->constrained('documents')->cascadeOnDelete();
+            $table->foreignId('customer_id')->constrained('customers')->cascadeOnDelete();
             $table->timestamp('signed_at')->nullable();
-            $table->enum('status', ['pending', 'signed', 'rejected'])->default('pending');
+            $table->foreignId('status_id')->constrained('document_status')->default(1)->cascadeOnDelete();
             $table->timestamps();
 
-            $table->foreign('document_id')->references('id')->on('documents')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unique(['document_id', 'customer_id']);
         });
     }
 

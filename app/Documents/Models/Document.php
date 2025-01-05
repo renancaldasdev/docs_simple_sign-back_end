@@ -4,31 +4,29 @@ declare(strict_types=1);
 
 namespace App\Documents\Models;
 
-use App\Signatures\Models\Signature;
-use App\Users\Models\User;
+use App\Customers\Models\Customer;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Document extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
+        'customer_id',
         'title',
         'file_path',
-        'status',
+        'status_id',
     ];
 
-    public function user(): BelongsTo
+    public function customer(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Customer::class);
     }
 
-    public function signatures(): HasMany
+    public function status(): BelongsTo
     {
-        return $this->hasMany(Signature::class);
+        return $this->belongsTo(DocumentStatus::class, 'status_id');
     }
 }

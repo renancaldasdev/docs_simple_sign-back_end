@@ -11,13 +11,12 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('documents', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->uuid('user_id');
-            $table->string('title');
-            $table->string('file_path');
-            $table->enum('status', ['pending', 'signed', 'rejected'])->default('pending');
+            $table->id();
+            $table->foreignId('customer_id')->constrained('customers')->cascadeOnDelete();
+            $table->string('title', 255);
+            $table->string('file_path', 255);
+            $table->foreignId('status_id')->constrained('document_status')->cascadeOnDelete()->default(1);
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
