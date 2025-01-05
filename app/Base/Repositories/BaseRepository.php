@@ -7,13 +7,12 @@ namespace App\Base\Repositories;
 use App\Base\Interface\BaseRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Ramsey\Uuid\Type\Integer;
 
 class BaseRepository implements BaseRepositoryInterface
 {
     protected string $_model;
 
-    public function save(MOdel $model): Model
+    public function save(Model $model): Model
     {
         $model->save();
         return $model;

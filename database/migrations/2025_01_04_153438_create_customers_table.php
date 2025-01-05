@@ -20,7 +20,7 @@ return new class extends Migration {
             $table->string('logo', 255)->nullable();
             $table->string('company_size', 255)->nullable();
             $table->string('reason_for_registration', 255);
-            $table->string('number_of_documents_per_month', 255);
+            $table->integer('number_of_documents_per_month')->unsigned()->default(1);
             $table->string('customer_signature', 255);
             $table->foreignId('state_id')->constrained('states')->cascadeOnDelete();
             $table->foreignId('city_id')->constrained('cities')->cascadeOnDelete();
