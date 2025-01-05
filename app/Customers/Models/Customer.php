@@ -32,6 +32,10 @@ class Customer extends Model
         'telephone',
         'email',
         'logo',
+        'company_size',
+        'reason_for_registration',
+        'number_of_documents_per_month',
+        'customer_signature',
         'state_id',
         'city_id',
     ];
